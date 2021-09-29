@@ -13,24 +13,27 @@ class App extends Component {
             token: [],
             user:[],
             loggedIn: false,
+            categories: []
          }
     }
 
-    // componentDidMount() {
-    //     const jwt = localStorage.getItem('token');
-    //     try{
-    //         const user = jwtDecode(jwt);
-    //         this.setState({
-    //             user
-    //         });
-    //     } catch {
+    componentDidMount() {
+        this.getAllCategories();
+        // const jwt = localStorage.getItem('token');
+        // try{
+        //     const user = jwtDecode(jwt);
+        //     this.setState({
+        //         user
+        //     });
+        // } catch {
 
-    //     }
-    // }
+        // }
+    }
+    //USER FUNCTIONS/API Calls
 
    userLogin = async (login) => {
        try {
-           let response = await axios.post('http://localhost:3000/api/authentication/login/',login);
+           let response = await axios.post('https://localhost:44394/api/authentication/login/',login);
            if (response === undefined){
                this.setState({});
            }
@@ -48,7 +51,28 @@ class App extends Component {
             console.log(err)
        }
    }
-
+   //PRODUCT FUNCTIONS
+   //CART FUNCTIONS
+   //CATEGORY FUNCTIONS
+    getAllCategories = async() => {
+        debugger;
+        try{
+            let response = await axios.get('https://localhost:44394/api/category');
+            if (response === undefined){
+                this.setState({});
+                console.log(response.data)
+            }
+            else{
+                this.setState({
+                    categories: response.data
+                });
+                console.log(this.state.categories)
+            }
+        }
+        catch (err){
+            console.log(err);
+        }
+    }
 
     render() {
         return (
