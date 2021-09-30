@@ -142,7 +142,7 @@ class App extends Component {
                     <Route />
                     <Route />
                 </Switch>
-                <AddProduct />
+                <AddProduct categories = {this.state.categories}/>
             </div>
         );
     }

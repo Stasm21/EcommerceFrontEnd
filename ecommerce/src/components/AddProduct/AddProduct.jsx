@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import DropDown from '../DropDownCategories/DropDown';
 import { withRouter } from 'react-router-dom';
 
 
@@ -11,7 +12,8 @@ class AddProduct extends Component {
             description: '',
             price: 0,
             rating: 0,
-            categoryID: ''   
+            categoryID: '',
+            categories: this.props.categories
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -24,13 +26,15 @@ class AddProduct extends Component {
         let priceNum = parseInt(price);
         let ratingNum = parseInt(rating);
         let catNum = parseInt(categoryID);
+        let categories = this.state.categories;
 
         const product = {
             name: this.state.name,
             description: this.state.description,
             price : priceNum,
             rating : ratingNum,
-            categoryID: catNum
+            categoryID: catNum,
+            categories: this.state.categories
         }
         try{
             console.log(product)
@@ -53,6 +57,8 @@ class AddProduct extends Component {
         this.createListing();
     }
 
+
+
     render() { 
         return ( 
             <div>
@@ -74,8 +80,20 @@ class AddProduct extends Component {
                     <label>Rating</label>
                     <input type = 'text' name = 'rating' onChange={this.handleChange} value= {this.state.rating}/>
                     </td><td>
-                    <label>Category</label>
-                    <input type = 'text' name = 'categoryID' onChange={this.handleChange} value= {this.state.categoryID}/>
+                    <label>Category
+                        <select 
+                        name='categoryID' 
+                        onChange={this.handleChange}
+                        className='form-control'
+                        value= {this.state.categoryID}
+                        >
+                        <option value=''>Select a Category</option>
+                        <option value='2'>Exterior</option>
+                        <option value='3'>Interior</option>
+                        <option value='4'>Suspension</option>
+                        </select> 
+                    </label>
+                    {/* <input type = 'text' name = 'categoryID' onChange={this.handleChange} value= {this.state.categoryID}/> */}
                     </td>
                 </tr>
                 <button type="submit">Create Product Listing</button>
@@ -87,3 +105,11 @@ class AddProduct extends Component {
 }
  
 export default AddProduct;
+
+{/* <label>Category
+    <select name='categoryID' id='category'>
+        <option value={this.state.categories.categoryID}>{this.state.categories.name}</option>
+    </select> 
+</label>
+<input type = 'text' name = 'categoryID' onChange={this.handleChange} value= {this.state.categoryID}/>
+</td> */}
