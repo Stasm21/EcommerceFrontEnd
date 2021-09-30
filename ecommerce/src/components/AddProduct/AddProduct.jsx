@@ -11,7 +11,7 @@ class AddProduct extends Component {
             description: '',
             price: 0,
             rating: 0,
-            category: ''   
+            categoryID: ''   
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -20,19 +20,21 @@ class AddProduct extends Component {
     createListing= async() => {
         let price = this.state.price;
         let rating = this.state.rating;
+        let categoryID = this.state.categoryID;
         let priceNum = parseInt(price);
         let ratingNum = parseInt(rating);
+        let catNum = parseInt(categoryID);
 
         const product = {
             name: this.state.name,
             description: this.state.description,
             price : priceNum,
             rating : ratingNum,
-            category: this.state.category
+            categoryID: catNum
         }
         try{
             console.log(product)
-            await axios.post('https://localhost:44394/api/products/', product);
+            await axios.post('https://localhost:44394/api/product/', product);
             this.setState({});
             console.log(`${this.state.name} has been added`)
         }catch (err) {
@@ -73,7 +75,7 @@ class AddProduct extends Component {
                     <input type = 'text' name = 'rating' onChange={this.handleChange} value= {this.state.rating}/>
                     </td><td>
                     <label>Category</label>
-                    <input type = 'text' name = 'category' onChange={this.handleChange} value= {this.state.category}/>
+                    <input type = 'text' name = 'categoryID' onChange={this.handleChange} value= {this.state.categoryID}/>
                     </td>
                 </tr>
                 <button type="submit">Create Product Listing</button>
