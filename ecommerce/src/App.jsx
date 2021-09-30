@@ -5,8 +5,8 @@ import jwtDecode from "jwt-decode";
 import { Switch, Route } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import Login from './components/Login/Login';
-import Products from './components/Products';
-import AddProduct from './components/AddProduct';
+import Registration from './components/Registration/Registration';
+
 
 class App extends Component {
     constructor(props) {
@@ -16,7 +16,8 @@ class App extends Component {
             user:[],
             loggedIn: false,
             categories: [],
-            registeredUser: []
+            registeredUser: [],
+            currentUser: []
          }
     }
 
@@ -25,9 +26,7 @@ class App extends Component {
         const jwt = localStorage.getItem('token');
         try{
             const user = jwtDecode(jwt);
-            this.setState({
-                user
-            });
+            this.setState({user});
         } catch {}
     }
 
@@ -67,11 +66,50 @@ class App extends Component {
             console.log(err)
        }
    }
+
+   getCurrentUser = async () => {
+       try{
+           const jwt= localStorage.getItem('token');
+           let response = await axios.get('https://localhost:44394/api/examples/user', {headers: {Authorization: 'Bearer ' + jwt}});
+           if (response === undefined){
+               this.setState({});
+           }
+           else{
+               this.setState({ 
+                   user: response.data
+                });
+                console.log(this.state.user)
+           }
+       }
+       catch(err) {
+           console.log(err);
+       }
+   };
+
    //PRODUCT FUNCTIONS
+   //GET PRODUCT TABLE (ALL PRODUCTS)
+    productTable = async () => {
+       try{
+           let response = await axios.get('https://localhost:44394/api/products/products/');
+           if (response === undefined){
+            this.setState({});
+        }
+        else{
+            this.setState({ 
+                productTable: response.data
+             });
+             console.log(this.state.productTable)
+            }
+        }
+        catch(err) {
+            console.log(err);
+        }
+    }
+    
+    
    //CART FUNCTIONS
    //CATEGORY FUNCTIONS
     getAllCategories = async() => {
-        debugger;
         try{
             let response = await axios.get('https://localhost:44394/api/category');
             if (response === undefined){
