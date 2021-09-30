@@ -4,7 +4,8 @@ import axios from 'axios';
 import { Switch, Route } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import Login from './components/Login/Login';
-
+import Products from './components/Products';
+import AddProduct from './components/AddProduct';
 
 class App extends Component {
     constructor(props) {
@@ -86,6 +87,8 @@ class App extends Component {
                     <Route />
                     <Route />
                 </Switch>
+                <Products />
+                <AddProduct />
             </div>
         );
     }
