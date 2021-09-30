@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
+import jwtDecode from "jwt-decode";
 import { Switch, Route } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import Login from './components/Login/Login';
@@ -14,25 +15,39 @@ class App extends Component {
             token: [],
             user:[],
             loggedIn: false,
-            categories: []
+            categories: [],
+            registeredUser: []
          }
     }
 
     componentDidMount() {
         this.getAllCategories();
-        // const jwt = localStorage.getItem('token');
-        // try{
-        //     const user = jwtDecode(jwt);
-        //     this.setState({
-        //         user
-        //     });
-        // } catch {
-
-        // }
+        const jwt = localStorage.getItem('token');
+        try{
+            const user = jwtDecode(jwt);
+            this.setState({
+                user
+            });
+        } catch {}
     }
-    //USER FUNCTIONS/API Calls
 
-   userLogin = async (login) => {
+    //USER FUNCTIONS/API Calls
+    userRegister = async (registeredUser) => {
+        console.log(registeredUser);
+        let response = await axios.post('https://localhost:44394/api/authentication/', registeredUser);
+        console.log(response.data);
+        if(response === undefined){
+            this.setState({});
+        }
+        else {
+            this.setState({
+                registeredUser: response.data,
+            });
+            console.log(registeredUser)
+        }
+    }
+
+    userLogin = async (login) => {
        try {
            let response = await axios.post('https://localhost:44394/api/authentication/login/',login);
            if (response === undefined){
@@ -81,6 +96,7 @@ class App extends Component {
             <div>
                 <h1>Title</h1>
                 <NavBar />
+                <Registration userRegister = {this.userRegister} />
                 <Login userLogin={this.userLogin}/>
                 <Switch>
                     <Route />
