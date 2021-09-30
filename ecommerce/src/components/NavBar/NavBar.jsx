@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
-import Rating from '@material-ui/lab/Rating';
-import Box from '@material-ui/core/Box';
 
 
 function NavBar() {
@@ -27,7 +25,7 @@ function NavBar() {
                     </Link>
                 </ul>
             </nav>
-                
+
         </div>
     );
 }

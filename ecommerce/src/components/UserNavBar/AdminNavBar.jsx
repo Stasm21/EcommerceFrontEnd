@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import './AdminNavBar.css';
 
 
-function NavBar() {
+function AdminNavBar() {
     return (
         <nav className="NavBar">
             <ul>
