@@ -7,6 +7,7 @@ import NavBar from './components/NavBar/NavBar';
 import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
 import AddProduct from './components/AddProduct/AddProduct';
+import ProductTable from './components/ProductTable/ProductTable';
 
 
 class App extends Component {
@@ -18,12 +19,14 @@ class App extends Component {
             loggedIn: false,
             categories: [],
             registeredUser: [],
-            currentUser: []
+            currentUser: [],
+            products: []
          }
     }
 
     componentDidMount() {
         this.getAllCategories();
+        this.getAllProducts();
         const jwt = localStorage.getItem('token');
         try{
             const user = jwtDecode(jwt);
@@ -89,17 +92,17 @@ class App extends Component {
 
    //PRODUCT FUNCTIONS
    //GET PRODUCT TABLE (ALL PRODUCTS)
-    productTable = async () => {
+    getAllProducts = async () => {
        try{
-           let response = await axios.get('https://localhost:44394/api/products/products/');
+           let response = await axios.get('https://localhost:44394/api/product/');
            if (response === undefined){
             this.setState({});
         }
         else{
             this.setState({ 
-                productTable: response.data
+                products: response.data
              });
-             console.log(this.state.productTable)
+             console.log(this.state.products)
             }
         }
         catch(err) {
@@ -143,6 +146,7 @@ class App extends Component {
                     <Route />
                 </Switch>
                 <AddProduct />
+                <ProductTable products = {this.state.products} />
             </div>
         );
     }
