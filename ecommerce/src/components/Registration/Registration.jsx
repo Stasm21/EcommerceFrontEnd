@@ -43,20 +43,34 @@ class Registration extends Component {
     render() { 
         return ( 
             <div>
-                <Form onSubmit = {this.handleSubmit}>
-                    <label>First Name</label>
-                    <input type = 'text' name = 'firstname' onChange={this.handleChange} value= {this.state.firstname}/>
-                    <label>Last Name</label>
-                    <input type = 'text' name = 'lastname' onChange={this.handleChange} value= {this.state.lastname}/>
-                    <label>Username</label>
-                    <input type = 'text' name = 'username' onChange={this.handleChange} value= {this.state.username}/>
-                    <label>Password</label>
-                    <input type = 'text' name = 'password' onChange={this.handleChange} value= {this.state.password}/>
-                    <label>Email</label>
-                    <input type = 'text' name = 'email' onChange={this.handleChange} value= {this.state.email}/>
-                    <label>Phone Number</label>
-                    <input type = 'text' name = 'phonenumber' onChange={this.handleChange} value= {this.state.phonenumber}/>
-                </Form>
+                <form onSubmit = {this.handleSubmit}>
+                    <table>
+                    <tr>
+                        <td><label>First Name</label>
+                        <input type = 'text' name = 'firstname' onChange={this.handleChange} value= {this.state.firstname}/></td>
+                        <td><label>Last Name</label>
+                        <input type = 'text' name = 'lastname' onChange={this.handleChange} value= {this.state.lastname}/>
+                        </td>
+                    </tr>
+                    <tr><td>   
+                        <label>Username</label>
+                        <input type = 'text' name = 'username' onChange={this.handleChange} value= {this.state.username}/>
+                        </td><td>
+                        <label>Password</label>
+                        <input type = 'text' name = 'password' onChange={this.handleChange} value= {this.state.password}/>
+                        </td>
+                    </tr>
+                    <tr><td>
+                        <label>Email</label>
+                        <input type = 'text' name = 'email' onChange={this.handleChange} value= {this.state.email}/>
+                        </td><td>
+                        <label>Phone Number</label>
+                        <input type = 'text' name = 'phonenumber' onChange={this.handleChange} value= {this.state.phonenumber}/>
+                        </td>
+                    </tr>
+                    <button type="submit">Submit</button>
+                    </table>
+                </form>
             </div>
          );
     }

@@ -5,6 +5,7 @@ import jwtDecode from "jwt-decode";
 import { Switch, Route } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import Login from './components/Login/Login';
+import Registration from './components/Registration/Registration';
 
 
 class App extends Component {
@@ -89,7 +90,6 @@ class App extends Component {
    //CART FUNCTIONS
    //CATEGORY FUNCTIONS
     getAllCategories = async() => {
-        debugger;
         try{
             let response = await axios.get('https://localhost:44394/api/category');
             if (response === undefined){
