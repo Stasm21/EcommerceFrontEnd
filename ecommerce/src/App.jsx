@@ -137,7 +137,8 @@ class App extends Component {
 
             <div>
                 <h1>Title</h1>
-                <NavBar />
+                <div className="Nav"><NavBar /></div>
+                
                 <Registration userRegister = {this.userRegister} />
                 <Login userLogin={this.userLogin}/>
                 <Switch>
@@ -147,6 +148,7 @@ class App extends Component {
                 </Switch>
                 <AddProduct />
                 <ProductTable products = {this.state.products} />
+                {/* <div className="batteryimg"><img src={"https://shop.advanceautoparts.com/wcsstore/CVWEB/staticproductimage/2916/large/2040468_gol_652_pri_larg.jpg"} alt=""  width="380" height="280"/></div> */}
             </div>
         );
     }

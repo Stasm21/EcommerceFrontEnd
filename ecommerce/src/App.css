@@ -1,0 +1,25 @@
+.App{
+    background-color: red;
+}
+
+.Nav{
+    display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  position: fixed;
+  object-fit: contain;
+  top: 0;
+  z-index: 50;
+  background-color: white;
+  width: 100%;
+}
+
+  
+  .batteryimg{
+
+        height: 15px;
+    object-fit: contain;
+    margin-left: 20px;
+}
+    
