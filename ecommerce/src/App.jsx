@@ -8,6 +8,7 @@ import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
 
 
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -141,8 +142,8 @@ class App extends Component {
                     <Route />
                     <Route />
                 </Switch>
-                <Products />
-                <AddProduct />
+                
+               
             </div>
         );
     }
