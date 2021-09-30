@@ -6,6 +6,7 @@ import { Switch, Route } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
+import AddProduct from './components/AddProduct/AddProduct';
 
 
 
@@ -106,7 +107,7 @@ class App extends Component {
             console.log(err);
         }
     }
-    
+
     
    //CART FUNCTIONS
    //CATEGORY FUNCTIONS
@@ -142,8 +143,12 @@ class App extends Component {
                     <Route />
                     <Route />
                 </Switch>
+<<<<<<< HEAD
                 
                
+=======
+                <AddProduct />
+>>>>>>> 1e5b80303d3b6a53d39e3d4e8be4ce51b0f28dd9
             </div>
         );
     }

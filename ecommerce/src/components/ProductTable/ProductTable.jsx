@@ -22,8 +22,8 @@ class Products  extends Component {
     }
     
     
+    axios.get('http://localhost:44394/api/product')
     
-          
     
     render() {
         return ( 
@@ -47,7 +47,7 @@ class Products  extends Component {
                             <td>{products.price}</td>
                             <td>{products.description}</td>
                             <td>{products.averageRating}</td>
-                            <td><button onClick ={()=> this.removeSong(products.ProductID)}>Delete</button></td> 
+                             
                         </tr>
                         
                     ))}
