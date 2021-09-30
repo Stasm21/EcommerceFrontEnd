@@ -87,6 +87,26 @@ class App extends Component {
    };
 
    //PRODUCT FUNCTIONS
+   //GET PRODUCT TABLE (ALL PRODUCTS)
+    productTable = async () => {
+       try{
+           let response = await axios.get('https://localhost:44394/api/products/products/');
+           if (response === undefined){
+            this.setState({});
+        }
+        else{
+            this.setState({ 
+                productTable: response.data
+             });
+             console.log(this.state.productTable)
+            }
+        }
+        catch(err) {
+            console.log(err);
+        }
+    }
+    
+    
    //CART FUNCTIONS
    //CATEGORY FUNCTIONS
     getAllCategories = async() => {
