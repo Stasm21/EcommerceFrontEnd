@@ -20,19 +20,21 @@ class AddProduct extends Component {
     createListing= async() => {
         let price = this.state.price;
         let rating = this.state.rating;
+        let category = this.state.category;
         let priceNum = parseInt(price);
         let ratingNum = parseInt(rating);
+        let catNum = parseInt(category);
 
         const product = {
             name: this.state.name,
             description: this.state.description,
             price : priceNum,
             rating : ratingNum,
-            category: this.state.category
+            category: catNum
         }
         try{
             console.log(product)
-            await axios.post('https://localhost:44394/api/products/', product);
+            await axios.post('https://localhost:44394/api/product/', product);
             this.setState({});
             console.log(`${this.state.name} has been added`)
         }catch (err) {
