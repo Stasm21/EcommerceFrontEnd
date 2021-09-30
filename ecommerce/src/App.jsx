@@ -20,7 +20,7 @@ class App extends Component {
             categories: [],
             registeredUser: [],
             currentUser: [],
-            products: []
+            products: [],
          }
     }
 
