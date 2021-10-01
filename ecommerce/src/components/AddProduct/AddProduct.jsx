@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import DropDown from '../DropDownCategories/DropDown';
 import { withRouter } from 'react-router-dom';
+import './AddProduct.css'
 
 
 class AddProduct extends Component {
@@ -61,7 +62,7 @@ class AddProduct extends Component {
 
     render() {
         return (
-            <div>
+            <div className="add">
             <form onSubmit = {(event) => this.handleSubmit(event)}>
                 <table>
                 <tr>
