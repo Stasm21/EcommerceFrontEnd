@@ -13,6 +13,7 @@ import NewSearchBar from './components/NewSearchBar/NewSearchBar';
 import UserNavBar from './components/UserNavBar/UserNavBar';
 import Home from './components/Home/Home';
 import './components/NavBar/NavBar.css'
+import Review from './components/Reviews/Reviews';
 
 class App extends Component {
     constructor(props) {
@@ -25,12 +26,16 @@ class App extends Component {
             registeredUser: [],
             currentUser: [],
             products: [],
+            reviews: [],
+            reviewById: [],
+            newReview: []
          }
     }
 
     componentDidMount() {
         this.getAllCategories();
         this.getAllProducts();
+        this.getReviews();
         const jwt = localStorage.getItem('token');
         try{
             const user = jwtDecode(jwt);
@@ -106,7 +111,7 @@ class App extends Component {
             this.setState({
                 products: response.data
              });
-             console.log(this.state.products)
+             //console.log(this.state.products)
             }
         }
         catch(err) {
@@ -128,7 +133,7 @@ class App extends Component {
                 this.setState({
                     categories: response.data
                 });
-                console.log(this.state.categories)
+                //console.log(this.state.categories)
             }
         }
         catch (err){
@@ -147,6 +152,52 @@ class App extends Component {
             products : results
         })
     }
+    //REVIEW FUNCTIONS
+    getReviews = async () => {
+        try{
+          let response = await axios.get(`https://localhost:44394/api/review/`);
+          if (response === undefined) {
+              this.setState({});
+          } else {
+              this.setState({
+                reviews: response.data
+              });
+              console.log(this.state.reviews)
+            }
+        }
+        catch(err) {
+          console.log(err);
+        }
+      };
+
+    reviewById = async (id) => {
+        try{
+          let response = await axios.get(`https://localhost:44394/api/reviews/${id}`);
+          if (response === undefined) {
+              this.setState({});
+          } else {
+              this.setState({
+                reviewById: response.data
+              });
+            }
+        }
+        catch(err) {
+          console.log(err);
+        }
+      };
+  
+      createReview = async (review) => {
+        let response = await axios.post('https://localhost:44394/api/reviews/create/', review);
+        if (response === undefined){
+              this.setState({
+              });
+          }else{
+            this.setState({
+              newReview: response.data
+          });
+          }
+      }
+
 
 
     render() {
@@ -168,6 +219,7 @@ class App extends Component {
                     {/* <Route path="/" render={() => <ProductTable products={this.state.products} />} /> */}
                     <Route path="add-product" render={() => <AddProduct categories={this.state.categories}/>} />
                 </Switch>
+                <Review reviews = {this.state.reviews} />
                 {/* <AddProduct categories = {this.state.categories}/>
                 <ProductTable products = {this.state.products} /> */}
                 {/* <div className="batteryimg"><img src={"https://shop.advanceautoparts.com/wcsstore/CVWEB/staticproductimage/2916/large/2040468_gol_652_pri_larg.jpg"} alt=""  width="380" height="280"/></div> */}
