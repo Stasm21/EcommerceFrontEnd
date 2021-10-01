@@ -9,10 +9,10 @@ function AdminNavBar() {
                 <Link to='/'>
                     <li><a>Home</a></li>
                 </Link>
-                <Link to='/about'>
+                <Link to='/list-product'>
                     <li><a>List Product</a></li>
                 </Link>
-                <Link to='/list'>
+                <Link to='/logout'>
                     <li><a>Logout</a></li>
                 </Link>
             </ul>

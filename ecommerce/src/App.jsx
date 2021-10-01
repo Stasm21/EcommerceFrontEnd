@@ -10,6 +10,8 @@ import AddProduct from './components/AddProduct/AddProduct';
 import ProductTable from './components/ProductTable/ProductTable';
 import ProductSearch from './components/SearchBar/SearchBar';
 import NewSearchBar from './components/NewSearchBar/NewSearchBar';
+import UserNavBar from './components/UserNavBar/UserNavBar';
+import Home from './components/Home/Home';
 
 class App extends Component {
     constructor(props) {
@@ -80,7 +82,7 @@ class App extends Component {
                this.setState({});
            }
            else{
-               this.setState({ 
+               this.setState({
                    user: response.data
                 });
                 console.log(this.state.user)
@@ -100,7 +102,7 @@ class App extends Component {
             this.setState({});
         }
         else{
-            this.setState({ 
+            this.setState({
                 products: response.data
              });
              console.log(this.state.products)
@@ -111,7 +113,7 @@ class App extends Component {
         }
     }
 
-    
+
    //CART FUNCTIONS
    //CATEGORY FUNCTIONS
     getAllCategories = async() => {
@@ -153,17 +155,19 @@ class App extends Component {
                 <h1>Title</h1>
                 <div className="Nav"><NavBar /></div>
                 <div className= "userfields">
-                <NewSearchBar filterProducts = {this.filterAllProducts} />
-                <ProductSearch />
-                <Registration  userRegister = {this.userRegister} />
-                <Login userLogin={this.userLogin}/>
+                {/* <NewSearchBar filterProducts = {this.filterAllProducts} /> */}
+                {/* <ProductSearch /> */}
+                {/* <Registration  userRegister = {this.userRegister} /> */}
+                {/* <Login userLogin={this.userLogin}/> */}
                 <Switch>
-                    <Route />
-                    <Route />
-                    <Route />
+                    <Route path="/registration" render={() => <Registration  userRegister = {this.userRegister} />} />
+                    <Route path="/login" render={() => <Login userLogin={this.userLogin}/>} />
+                    <Route path="/" render={() => <Home filterProducts={this.filterAllProducts} products = {this.state.products} />} />
+                    {/* <Route path="/" render={() => <ProductTable products={this.state.products} />} /> */}
+                    <Route path="add-product" render={() => <AddProduct categories={this.state.categories}/>} />
                 </Switch>
-                <AddProduct categories = {this.state.categories}/>
-                <ProductTable products = {this.state.products} />
+                {/* <AddProduct categories = {this.state.categories}/>
+                <ProductTable products = {this.state.products} /> */}
                 {/* <div className="batteryimg"><img src={"https://shop.advanceautoparts.com/wcsstore/CVWEB/staticproductimage/2916/large/2040468_gol_652_pri_larg.jpg"} alt=""  width="380" height="280"/></div> */}
                 </div>
             </div>
