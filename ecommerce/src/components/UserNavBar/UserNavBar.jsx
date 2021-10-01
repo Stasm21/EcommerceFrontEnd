@@ -1,23 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './NavBar.css';
 
 
-function NavBar() {
+
+function UserNavBar() {
     return (
         <div>
-            <nav className="NavBar">
+            <nav className="UserNavBar">
                 <ul>
                     <Link to='/'>
                         <li><a>Home</a></li>
                     </Link>
 
-                    <Link to="/registration">
-                        <li><a>Register</a></li>
+                    <Link to="/shopping-cart">
+                        <li><a>Shopping Cart</a></li>
                     </Link>
 
-                    <Link to='/login'>
-                        <li><a>Login</a></li>
+                    <Link to='/logout'>
+                        <li><a>Logout</a></li>
                     </Link>
 
                 </ul>
@@ -28,4 +28,4 @@ function NavBar() {
 }
 
 
-export default NavBar;
+export default UserNavBar;

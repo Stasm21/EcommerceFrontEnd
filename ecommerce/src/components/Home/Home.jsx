@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
+import NewSearchBar from '../NewSearchBar/NewSearchBar';
+import ProductTable from '../ProductTable/ProductTable';
 
-const Home = () => {
+const Home = (props) => {
     return (
-        <div>Home</div>
+        <div>
+            <NewSearchBar filterProducts = {props.filterAllProducts} />
+            <ProductTable products = {props.products} />
+        </div>
     );
 }
 
