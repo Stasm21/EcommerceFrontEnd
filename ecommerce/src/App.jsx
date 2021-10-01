@@ -207,7 +207,8 @@ class App extends Component {
                 
                 <NavBar />
                 <div className= "userfields">
-                {/* <NewSearchBar filterProducts = {this.filterAllProducts} /> */}
+                <br /> <br /> <br />
+                <NewSearchBar filterProducts = {this.filterAllProducts} />
                 {/* <ProductSearch /> */}
                 {/* <Registration  userRegister = {this.userRegister} /> */}
                 {/* <Login userLogin={this.userLogin}/> */}
