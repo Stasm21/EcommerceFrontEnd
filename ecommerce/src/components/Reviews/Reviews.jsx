@@ -12,7 +12,7 @@ function Review(props){
             return <tr key={review.reviewID}>
                 <td>{review.description}</td>
                 <td>{review.rating}</td>
-                <td>{review.productId}</td>
+                <td>{review.productID}</td>
 
             </tr>
         })
