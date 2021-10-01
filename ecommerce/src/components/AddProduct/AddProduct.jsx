@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 class AddProduct extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             name: '',
             description: '',
             price: 0,
@@ -59,8 +59,8 @@ class AddProduct extends Component {
 
 
 
-    render() { 
-        return ( 
+    render() {
+        return (
             <div>
             <form onSubmit = {(event) => this.handleSubmit(event)}>
                 <table>
@@ -71,7 +71,7 @@ class AddProduct extends Component {
                     <input type = 'text' name = 'description' onChange={this.handleChange} value= {this.state.description}/>
                     </td>
                 </tr>
-                <tr><td>   
+                <tr><td>
                     <label>Price</label>
                     <input type = 'text' name = 'price' onChange={this.handleChange} value= {this.state.price}/>
                     </td>
@@ -81,8 +81,8 @@ class AddProduct extends Component {
                     <input type = 'text' name = 'rating' onChange={this.handleChange} value= {this.state.rating}/>
                     </td><td>
                     <label>Category
-                        <select 
-                        name='categoryID' 
+                        <select
+                        name='categoryID'
                         onChange={this.handleChange}
                         className='form-control'
                         value= {this.state.categoryID}
@@ -92,7 +92,7 @@ class AddProduct extends Component {
                         <option value='2'>Exterior</option>
                         <option value='3'>Interior</option>
                         <option value='4'>Suspension</option>
-                        </select> 
+                        </select>
                     </label>
                     {/* <input type = 'text' name = 'categoryID' onChange={this.handleChange} value= {this.state.categoryID}/> */}
                     </td>
@@ -104,13 +104,13 @@ class AddProduct extends Component {
          );
     }
 }
- 
+
 export default AddProduct;
 
-{/* <label>Category
+/* <label>Category
     <select name='categoryID' id='category'>
         <option value={this.state.categories.categoryID}>{this.state.categories.name}</option>
-    </select> 
+    </select>
 </label>
 <input type = 'text' name = 'categoryID' onChange={this.handleChange} value= {this.state.categoryID}/>
-</td> */}
+</td> */

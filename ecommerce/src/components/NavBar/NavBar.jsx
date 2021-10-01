@@ -21,6 +21,10 @@ function NavBar() {
                         <li><a>Login</a></li>
                     </Link>
 
+                    <Link to="/add-product">
+                        <li><a>Add Product</a></li>
+                    </Link>
+
                 </ul>
             </nav>
 

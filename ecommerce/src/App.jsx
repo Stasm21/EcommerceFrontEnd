@@ -185,7 +185,7 @@ class App extends Component {
           console.log(err);
         }
       };
-  
+
       createReview = async (review) => {
         let response = await axios.post('https://localhost:44394/api/reviews/create/', review);
         if (response === undefined){
@@ -211,18 +211,17 @@ class App extends Component {
                 {/* <ProductSearch /> */}
                 {/* <Registration  userRegister = {this.userRegister} /> */}
                 {/* <Login userLogin={this.userLogin}/> */}
-                
+
                 <Switch>
                     <Route path="/registration" render={() => <Registration  userRegister = {this.userRegister} />} />
                     <Route path="/login" render={() => <Login userLogin={this.userLogin}/>} />
-                    <Route path="/" render={() => <Home filterProducts={this.filterAllProducts} products = {this.state.products} />} />
-                    {/* <Route path="/" render={() => <ProductTable products={this.state.products} />} /> */}
-                    <Route path="add-product" render={() => <AddProduct categories={this.state.categories}/>} />
+                    <Route path="/" exact render={() => <Home filterProducts={this.filterAllProducts} products = {this.state.products} />} />
+                    <Route path="/add-product" render={() => <AddProduct categories={this.state.categories} />} />
                 </Switch>
                 <Review reviews = {this.state.reviews} />
-                {/* <AddProduct categories = {this.state.categories}/>
-                <ProductTable products = {this.state.products} /> */}
-                {/* <div className="batteryimg"><img src={"https://shop.advanceautoparts.com/wcsstore/CVWEB/staticproductimage/2916/large/2040468_gol_652_pri_larg.jpg"} alt=""  width="380" height="280"/></div> */}
+                {/* <AddProduct categories = {this.state.categories}/> */}
+                {/* <ProductTable products = {this.state.products} /> */}
+
                 </div>
             </div>
         );

@@ -4,7 +4,7 @@ import './AdminNavBar.css';
 
 function AdminNavBar() {
     return (
-        <nav className="NavBar">
+        <nav className="AdminNavBar">
             <ul>
                 <Link to='/'>
                     <li><a>Home</a></li>
