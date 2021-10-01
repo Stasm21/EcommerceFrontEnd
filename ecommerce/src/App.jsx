@@ -204,7 +204,7 @@ class App extends Component {
         return (
 
             <div>
-                <h1>Title</h1>
+                
                 <NavBar />
                 <div className= "userfields">
                 {/* <NewSearchBar filterProducts = {this.filterAllProducts} /> */}

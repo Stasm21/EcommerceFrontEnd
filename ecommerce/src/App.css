@@ -2,9 +2,10 @@
     background-color: red;
 }
 
-table, th, td {
+/* table, th, td,tr{
     border: 1px solid rgb(248, 242, 242);
-  }
+    margin-top: 5%;
+  } */
   
 body::after {
     content: "";
@@ -24,7 +25,7 @@ body::after {
     z-index: -1;   
   }
 
-nav{
+  .navbar{
     margin: 0 0 1em 0;
 	float: left;
     display: flex;
@@ -39,6 +40,46 @@ nav{
   width: 100%;
 }
 
+
+ul {
+    display: flex;
+  align-items: center;
+  justify-content: space-around;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    width: 100%;
+  margin-bottom: auto;
+  }
+
+  li {
+    float: left;
+  }
+
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  li a:hover {
+    background-color: #111;
+  }
+  .navbar_logo{
+    color: springgreen;
+    height: 25px;
+    object-fit: contain;
+    position: relative;
+    left: 10px;
+    top: -5px;
+  }
  .userfields{
      margin-top: 30px;
  } 

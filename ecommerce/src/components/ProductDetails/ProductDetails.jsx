@@ -1,7 +1,9 @@
 import React from "react";
+import './ProductDetails.css'
 
 function ProductDetails(props){
     return(
+        <div className="details">
         <table>
             <thead>
                 <tr>
@@ -27,7 +29,7 @@ function ProductDetails(props){
                 })}
             </tbody>
         </table>
-    )
+    </div>)
 }
 
 export default ProductDetails

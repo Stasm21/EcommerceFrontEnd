@@ -6,8 +6,7 @@ import './NavBar.css';
 function NavBar() {
     return (
         <div>
-            <nav >
-            <div><h1 className="navbar_logo">Title</h1></div>
+            <nav className="navbar">
                 <ul>
                     <Link to='/'>
                         <li><a>Home</a></li>
@@ -21,6 +20,7 @@ function NavBar() {
                         <li><a>Login</a></li>
                     </Link>
 
+            <h1 className="navbar_logo">SparkPlugs ™</h1>
                 </ul>
             </nav>
 
