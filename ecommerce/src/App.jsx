@@ -8,7 +8,8 @@ import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
 import AddProduct from './components/AddProduct/AddProduct';
 import ProductTable from './components/ProductTable/ProductTable';
-
+import ProductSearch from './components/SearchBar/SearchBar';
+import NewSearchBar from './components/NewSearchBar/NewSearchBar';
 
 class App extends Component {
     constructor(props) {
@@ -132,6 +133,19 @@ class App extends Component {
         }
     }
 
+    filterAllProducts = async (searchTerm) => {
+        let results = this.state.products.filter(function(product){
+            if(product.name == searchTerm)
+            {
+                return true;
+            }
+        })
+        this.setState({
+            products : results
+        })
+    }
+
+
     render() {
         return (
 
@@ -139,6 +153,8 @@ class App extends Component {
                 <h1>Title</h1>
                 <div className="Nav"><NavBar /></div>
                 <div className= "userfields">
+                <NewSearchBar filterProducts = {this.filterAllProducts} />
+                <ProductSearch />
                 <Registration  userRegister = {this.userRegister} />
                 <Login userLogin={this.userLogin}/>
                 <Switch>
