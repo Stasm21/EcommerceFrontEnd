@@ -1,9 +1,9 @@
 
 
-.NavBar {
+/* .NavBar {
     font-size: 30px;
     
-}
+} */
 
 ul {
     list-style-type: none;
@@ -14,6 +14,7 @@ ul {
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 0;
+    width: 100%;
   }
 
   li {
@@ -30,4 +31,11 @@ ul {
 
   li a:hover {
     background-color: #111;
+  }
+  .navbar_logo{
+    color: springgreen;
+    height: 25px;
+    object-fit: contain;
+    position: relative;
+    left: 10px;
   }

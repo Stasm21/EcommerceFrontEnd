@@ -12,6 +12,7 @@ import ProductSearch from './components/SearchBar/SearchBar';
 import NewSearchBar from './components/NewSearchBar/NewSearchBar';
 import UserNavBar from './components/UserNavBar/UserNavBar';
 import Home from './components/Home/Home';
+import './components/NavBar/NavBar.css'
 
 class App extends Component {
     constructor(props) {
@@ -153,12 +154,13 @@ class App extends Component {
 
             <div>
                 <h1>Title</h1>
-                <div className="Nav"><NavBar /></div>
+                <NavBar />
                 <div className= "userfields">
                 {/* <NewSearchBar filterProducts = {this.filterAllProducts} /> */}
                 {/* <ProductSearch /> */}
                 {/* <Registration  userRegister = {this.userRegister} /> */}
                 {/* <Login userLogin={this.userLogin}/> */}
+                
                 <Switch>
                     <Route path="/registration" render={() => <Registration  userRegister = {this.userRegister} />} />
                     <Route path="/login" render={() => <Login userLogin={this.userLogin}/>} />

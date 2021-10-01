@@ -6,7 +6,8 @@ import './NavBar.css';
 function NavBar() {
     return (
         <div>
-            <nav className="NavBar">
+            <nav >
+            <div><h1 className="navbar_logo">Title</h1></div>
                 <ul>
                     <Link to='/'>
                         <li><a>Home</a></li>
