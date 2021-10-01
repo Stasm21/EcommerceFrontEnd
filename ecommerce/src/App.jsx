@@ -148,7 +148,7 @@ class App extends Component {
                 </Switch>
                 <AddProduct categories = {this.state.categories}/>
                 <ProductTable products = {this.state.products} />
-                {/* <div className="batteryimg"><img src={"https://shop.advanceautoparts.com/wcsstore/CVWEB/staticproductimage/2916/large/2040468_gol_652_pri_larg.jpg"} alt=""  width="380" height="280"/></div> */}
+                <div className="batteryimg"><img src={"https://shop.advanceautoparts.com/wcsstore/CVWEB/staticproductimage/2916/large/2040468_gol_652_pri_larg.jpg"} alt=""  width="380" height="280"/></div>
                 </div>
             </div>
         );
