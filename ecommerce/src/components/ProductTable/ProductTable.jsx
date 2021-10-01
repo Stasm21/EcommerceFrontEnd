@@ -1,4 +1,5 @@
 import React from 'react';
+import './ProductTable.css'
 
 function ProductTable(props){
     if (props.products === undefined) {
@@ -18,7 +19,7 @@ function ProductTable(props){
             </tr>
         })
         return (
-            <div>
+            <div className="details">
                 <table>
                     <thead>
                         <tr>

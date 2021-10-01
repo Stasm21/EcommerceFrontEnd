@@ -4,7 +4,7 @@ import ProductTable from '../ProductTable/ProductTable';
 
 const Home = (props) => {
     return (
-        <div>
+        <div className = "home">
             <NewSearchBar filterProducts = {props.filterAllProducts} />
             <ProductTable products = {props.products} />
         </div>

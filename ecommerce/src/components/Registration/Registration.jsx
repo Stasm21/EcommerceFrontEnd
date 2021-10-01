@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import'./Registration.css'
 
 class Registration extends Component {
     constructor(props) {
@@ -42,7 +43,7 @@ class Registration extends Component {
 
     render() { 
         return ( 
-            <div>
+            <div className="registration">
                 <form onSubmit = {this.handleSubmit}>
                     <table>
                     <tr>
