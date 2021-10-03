@@ -8,6 +8,7 @@ import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
 import AddProduct from './components/AddProduct/AddProduct';
 import ProductTable from './components/ProductTable/ProductTable';
+import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import ProductSearch from './components/SearchBar/SearchBar';
 import NewSearchBar from './components/NewSearchBar/NewSearchBar';
 import UserNavBar from './components/UserNavBar/UserNavBar';
@@ -26,10 +27,11 @@ class App extends Component {
             registeredUser: [],
             currentUser: [],
             products: [],
+            shoppingCart: [],
             reviews: [],
             reviewById: [],
             newReview: []
-         }
+        }
     }
 
     componentDidMount() {
@@ -88,7 +90,7 @@ class App extends Component {
                this.setState({});
            }
            else{
-               this.setState({
+               this.setState({ 
                    user: response.data
                 });
                 console.log(this.state.user)
@@ -108,7 +110,7 @@ class App extends Component {
             this.setState({});
         }
         else{
-            this.setState({
+            this.setState({ 
                 products: response.data
              });
              //console.log(this.state.products)
@@ -119,7 +121,7 @@ class App extends Component {
         }
     }
 
-
+    
    //CART FUNCTIONS
    //CATEGORY FUNCTIONS
     getAllCategories = async() => {
@@ -152,58 +154,151 @@ class App extends Component {
             products : results
         })
     }
-    //REVIEW FUNCTIONS
-    getReviews = async () => {
+    getShoppingCart = async () => {
+        let tempShoppingCart = this.state.shoppingCart
         try{
-          let response = await axios.get(`https://localhost:44394/api/review/`);
-          if (response === undefined) {
-              this.setState({});
-          } else {
-              this.setState({
-                reviews: response.data
-              });
-              console.log(this.state.reviews)
+            let response = await axios('https://localhost:44394/api/shoppingcart/');
+            if (response === undefined){
+                this.setState({});
+                console.log(response.data)
             }
+            else{
+                this.setState({
+                tempShoppingCart: response.data
+                });
+            }
+            return this.setState({
+            shoppingCart: tempShoppingCart,
+        });
         }
-        catch(err) {
-          console.log(err);
+        catch (err){
+            console.log(err);
         }
-      };
-
-    reviewById = async (id) => {
+    };
+    getUsersCart = async () => {
         try{
-          let response = await axios.get(`https://localhost:44394/api/reviews/${id}`);
-          if (response === undefined) {
-              this.setState({});
-          } else {
-              this.setState({
-                reviewById: response.data
-              });
-            }
-        }
-        catch(err) {
-          console.log(err);
-        }
-      };
-
-      createReview = async (review) => {
-        let response = await axios.post('https://localhost:44394/api/reviews/create/', review);
-        if (response === undefined){
-              this.setState({
-              });
-          }else{
+            const jwt= localStorage.getItem('token');
+            let response = await axios.get(`https://localhost:44394/api/shoppingcart`, {headers: {Authorization: 'Bearer ' + jwt}})
+            if (response === undefined) {
+                this.setState({});
+            } 
+            else {
             this.setState({
-              newReview: response.data
+                shoppingCart: response.data,
+            });
+            }
+        }
+        catch(err){
+            console.log(err);
+        }
+    };
+    addProductToCart = async (product) => {
+        let productToAdd = {
+            productId: product.productId
+        }
+        try{
+            const jwt= localStorage.getItem('token');
+            let response = await axios.post("https://localhost:44394/api/shoppingcart", productToAdd, {headers: { Authorization: "Bearer " + jwt }})
+            if (response === undefined) {
+                this.setState({});
+            } 
+            else {
+            this.setState({
+                product: response.data,
+            });
+            }
+        }
+        catch(err){
+            console.log(err);
+        }
+    };
+    deleteProductFromCart = async (productId) => {
+        try{
+            const jwt= localStorage.getItem('token');
+            let response = await axios.delete(`https://localhost:44394/api/shoppingcart/${productId}`, {headers: {Authorization: 'Bearer ' + jwt}} )
+            if (response === undefined) {
+                this.setState({});
+            } 
+            else {
+            this.setState({
+                product: response.data,
+            });
+            }
+        }
+        catch(err){
+            console.log(err);
+        }
+    };
+    increaseQuantity = async (quantity, shoppingCartId) => {
+        try{
+            const jwt= localStorage.getItem('token');
+            await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity+1} ,{headers: {Authorization: 'Bearer ' + jwt}})
+        }
+        catch(err){
+            console.log(err);
+        }
+    };
+    decreaseQuantity = async (quantity, shoppingCartId) => {
+        try{
+            const jwt= localStorage.getItem('token');
+            await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity-1} ,{headers: {Authorization: 'Bearer ' + jwt}})
+        }
+        catch(err){
+            console.log(err);
+        }
+    };  
+ //REVIEW FUNCTIONS
+ getReviews = async () => {
+    try{
+      let response = await axios.get(`https://localhost:44394/api/review/`);
+      if (response === undefined) {
+          this.setState({});
+      } else {
+          this.setState({
+            reviews: response.data
           });
-          }
-      }
+          console.log(this.state.reviews)
+        }
+    }
+    catch(err) {
+      console.log(err);
+    }
+  };
 
+reviewById = async (id) => {
+    try{
+      let response = await axios.get(`https://localhost:44394/api/reviews/${id}`);
+      if (response === undefined) {
+          this.setState({});
+      } else {
+          this.setState({
+            reviewById: response.data
+          });
+        }
+    }
+    catch(err) {
+      console.log(err);
+    }
+  };
+
+  createReview = async (review) => {
+    let response = await axios.post('https://localhost:44394/api/reviews/create/', review);
+    if (response === undefined){
+          this.setState({
+          });
+      }else{
+        this.setState({
+          newReview: response.data
+      });
+      }
+  }
+    
 
 
     render() {
         return (
 
-            <div>
+               <div>
                 
                 <NavBar />
                 <div className= "userfields">
@@ -218,6 +313,12 @@ class App extends Component {
                     <Route path="/login" render={() => <Login userLogin={this.userLogin}/>} />
                     <Route path="/" exact render={() => <Home filterProducts={this.filterAllProducts} products = {this.state.products} />} />
                     <Route path="/add-product" render={() => <AddProduct categories={this.state.categories} />} />
+                    <Route path="/shopping-cart" render={() => <ShoppingCart decreaseQuantity={this.decreaseQuantity}
+                            increaseQuantity={this.increaseQuantity}
+                            getUsersCart={this.getUsersCart()}
+                            user={this.state.currentUser}
+                            shoppingCart={this.getShoppingCart()}
+                            deleteItemFromCart={this.deleteItemFromCart()}/>} />
                 </Switch>
                 <Review reviews = {this.state.reviews} />
                 {/* <AddProduct categories = {this.state.categories}/> */}
@@ -228,5 +329,7 @@ class App extends Component {
         );
     }
 }
+    
+
 
 export default App;
