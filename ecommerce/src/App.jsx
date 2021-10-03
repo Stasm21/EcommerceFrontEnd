@@ -7,11 +7,11 @@ import NavBar from './components/NavBar/NavBar';
 import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
 import AddProduct from './components/AddProduct/AddProduct';
-import ProductTable from './components/ProductTable/ProductTable';
+//import ProductTable from './components/ProductTable/ProductTable';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
-import ProductSearch from './components/SearchBar/SearchBar';
+//import ProductSearch from './components/SearchBar/SearchBar';
 import NewSearchBar from './components/NewSearchBar/NewSearchBar';
-import UserNavBar from './components/UserNavBar/UserNavBar';
+//import UserNavBar from './components/UserNavBar/UserNavBar';
 import Home from './components/Home/Home';
 import './components/NavBar/NavBar.css'
 import Review from './components/Reviews/Reviews';

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import DropDown from '../DropDownCategories/DropDown';
+
 import { withRouter } from 'react-router-dom';
 import './AddProduct.css'
 
