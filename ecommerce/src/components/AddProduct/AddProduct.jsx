@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import { withRouter } from 'react-router-dom';
 import './AddProduct.css'
+import { CategoryOutlined } from '@material-ui/icons';
 
 
 class AddProduct extends Component {
@@ -13,8 +14,9 @@ class AddProduct extends Component {
             description: '',
             price: 0,
             rating: 0,
-            categoryID: '',
-            categories: this.props.categories
+            categoryID: 0,
+            categories: this.props.categories,
+            products: this.props.products
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -92,10 +94,10 @@ class AddProduct extends Component {
                         value= {this.state.categoryID}
                         >
                         <option value=''>Select a Category</option>
-                        <option value='1'>Performance</option>
-                        <option value='2'>Exterior</option>
+                        <option value='1'>{this.props.categories.name}</option>
+                        {/* <option value='2'>Exterior</option>
                         <option value='3'>Interior</option>
-                        <option value='4'>Suspension</option>
+                        <option value='4'>Suspension</option> */}
                         </select>
                     </label>
                     {/* <input type = 'text' name = 'categoryID' onChange={this.handleChange} value= {this.state.categoryID}/> */}

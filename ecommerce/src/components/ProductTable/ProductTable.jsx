@@ -16,7 +16,7 @@ function ProductTable(props){
                 <td>{product.description}</td>
                 <td>{product.price}</td>
                 <td>{product.averageRating}</td>
-                <td>{product.categoryID}</td>
+                <td>{product.category.name}</td>
             </tr>
         })
         return (

@@ -137,7 +137,7 @@ class App extends Component {
                 this.setState({
                     categories: response.data
                 });
-                //console.log(this.state.categories)
+                console.log(this.state.categories)
             }
         }
         catch (err){
@@ -327,7 +327,7 @@ reviewById = async (id) => {
                     <Route path="/registration" render={() => <Registration  userRegister = {this.userRegister} />} />
                     <Route path="/login" render={() => <Login userLogin={this.userLogin}/>} />
                     <Route path="/" exact render={() => <Home filterProducts={this.filterAllProducts} products = {this.state.products} categories={this.state.categories} />} />
-                    <Route path="/add-product" render={() => <AddProduct categories={this.state.categories} />} />
+                    <Route path="/add-product" render={() => <AddProduct products = {this.state.products} categories={this.state.categories} />} />
                     <Route path="/shopping-cart" render={() => <ShoppingCart decreaseQuantity={this.decreaseQuantity}
                             increaseQuantity={this.increaseQuantity}
                             getUsersCart={this.getUsersCart()}
