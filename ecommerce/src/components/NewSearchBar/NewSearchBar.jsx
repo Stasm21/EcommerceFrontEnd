@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import './NewSearchBar.css'
 
 
 class NewSearchBar extends Component {
@@ -26,7 +27,7 @@ class NewSearchBar extends Component {
                 <div className='row'>
                     <form onSubmit={this.handleSubmit}>
                         <input 
-                        className='col-sm-offset-6 col-sm-3'
+                        className='col-sm-offset-6 col-sm-3 '
                         type='text' name='searchBar'
                         onChange={this.handleChange}
                         value={this.state.searchBar}

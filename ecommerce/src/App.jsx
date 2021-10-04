@@ -71,6 +71,7 @@ class App extends Component {
            else{
                this.setState({
                    token: response.data,
+                   user: this.state.user,
                    loggedIn: !this.state.loggedIn
                });
                localStorage.setItem('token', this.state.token.token);
@@ -146,7 +147,7 @@ class App extends Component {
 
     filterAllProducts = async (searchTerm) => {
         let results = this.state.products.filter(function(product){
-            if(product.name == searchTerm)
+            if(product.name === searchTerm)
             {
                 return true;
             }
@@ -323,7 +324,7 @@ reviewById = async (id) => {
                 <Switch>
                     <Route path="/registration" render={() => <Registration  userRegister = {this.userRegister} />} />
                     <Route path="/login" render={() => <Login userLogin={this.userLogin}/>} />
-                    <Route path="/" exact render={() => <Home filterProducts={this.filterAllProducts} products = {this.state.products} />} />
+                    <Route path="/" exact render={() => <Home filterProducts={this.filterAllProducts} products = {this.state.products} categories={this.state.categories} />} />
                     <Route path="/add-product" render={() => <AddProduct categories={this.state.categories} />} />
                     <Route path="/shopping-cart" render={() => <ShoppingCart decreaseQuantity={this.decreaseQuantity}
                             increaseQuantity={this.increaseQuantity}
