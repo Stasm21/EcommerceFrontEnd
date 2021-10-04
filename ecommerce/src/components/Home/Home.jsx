@@ -9,6 +9,7 @@ const Home = (props) => {
         <div className = "home">
             <div><br /> <br /> <br />
             {/* <NewSearchBar filterProducts = {props.filterAllProducts} /> */}
+<<<<<<< HEAD
             <ProductTable products = {props.products} />
             </div>
             
@@ -29,6 +30,10 @@ const Home = (props) => {
             </table>
             </div>
             </div>
+=======
+            <ProductTable products = {props.products} categories = {props.categories} />
+        </div>
+>>>>>>> a16162019f137fdf6c03b7afe88c2ca1ef9a7e5c
     );
 }
 
