@@ -1,5 +1,6 @@
 import React from 'react';
 import './ProductTable.css'
+import NewReview from '../Reviews/NewReview';
 
 function ProductTable(props){
     if (props.products === undefined) {

@@ -15,6 +15,7 @@ import NewSearchBar from './components/NewSearchBar/NewSearchBar';
 import Home from './components/Home/Home';
 import './components/NavBar/NavBar.css'
 import Review from './components/Reviews/Reviews';
+import NewReview from './components/Reviews/NewReview';
 
 class App extends Component {
     constructor(props) {
@@ -281,18 +282,29 @@ reviewById = async (id) => {
     }
   };
 
-  createReview = async (review) => {
-    let response = await axios.post('https://localhost:44394/api/reviews/create/', review);
-    if (response === undefined){
-          this.setState({
-          });
-      }else{
-        this.setState({
-          newReview: response.data
-      });
-      }
-  }
+//   createReview = async (review) => {
+//     let response = await axios.post('https://localhost:44394/api/Review/', review);
+//     console.log(review);
+//     if (response === undefined){
+//           this.setState({
+//           });
+//       }else{
+//         this.setState({
+//           newReview: response.data
+//       });
+//       }
+//   }
     
+  createReview = async (review) => {
+      try{
+          let response = await axios.post('https://localhost:44394/api/Review/', review)
+          console.log(response.data)
+      }
+      catch(err){
+          console.log("error in createReview", err)
+      }
+      this.getReviews();
+  }
 
 
     render() {
@@ -321,6 +333,7 @@ reviewById = async (id) => {
                             deleteItemFromCart={this.deleteItemFromCart()}/>} />
                 </Switch>
                 <Review reviews = {this.state.reviews} />
+                <NewReview createNewReview={this.createReview}/>
                 {/* <AddProduct categories = {this.state.categories}/> */}
                 {/* <ProductTable products = {this.state.products} /> */}
 
@@ -330,6 +343,5 @@ reviewById = async (id) => {
     }
 }
     
-
 
 export default App;

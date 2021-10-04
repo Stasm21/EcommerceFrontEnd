@@ -58,7 +58,10 @@ class AddProduct extends Component {
         this.createListing();
     }
 
-
+    onSubmit = (event) => {
+        event.preventDefault();
+        this.addReview();
+    }
 
     render() {
         return (
