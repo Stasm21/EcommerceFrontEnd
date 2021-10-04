@@ -15,6 +15,7 @@ import NewSearchBar from './components/NewSearchBar/NewSearchBar';
 import Home from './components/Home/Home';
 import './components/NavBar/NavBar.css'
 import Review from './components/Reviews/Reviews';
+import NewReview from './components/Reviews/NewReview';
 
 class App extends Component {
     constructor(props) {
@@ -71,6 +72,7 @@ class App extends Component {
            else{
                this.setState({
                    token: response.data,
+                   user: this.state.user,
                    loggedIn: !this.state.loggedIn
                });
                localStorage.setItem('token', this.state.token.token);
@@ -146,7 +148,7 @@ class App extends Component {
 
     filterAllProducts = async (searchTerm) => {
         let results = this.state.products.filter(function(product){
-            if(product.name == searchTerm)
+            if(product.name === searchTerm)
             {
                 return true;
             }
@@ -282,18 +284,31 @@ reviewById = async (id) => {
     }
   };
 
-  createReview = async (review) => {
-    let response = await axios.post('https://localhost:44394/api/reviews/create/', review);
-    if (response === undefined){
-          this.setState({
-          });
-      }else{
-        this.setState({
-          newReview: response.data
-      });
-      }
-  }
+//   createReview = async (review) => {
+//     let response = await axios.post('https://localhost:44394/api/Review/', review);
+//     console.log(review);
+//     if (response === undefined){
+//           this.setState({
+//           });
+//       }else{
+//         this.setState({
+//           newReview: response.data
+//       });
+//       }
+//   }
+
     
+  createReview = async (shoe) => {
+
+      try{
+          let response = await axios.post('https://localhost:44394/api/Review/', shoe)
+          console.log(response.data)
+      }
+      catch(err){
+          console.log("error in createReview", err)
+      }
+      this.getReviews();
+  }
 
 
     render() {
@@ -323,6 +338,7 @@ reviewById = async (id) => {
                             deleteItemFromCart={this.deleteItemFromCart()}/>} />
                 </Switch>
                 <Review reviews = {this.state.reviews} />
+                {/* <NewReview createNewReview={this.createReview}/> */}
                 {/* <AddProduct categories = {this.state.categories}/> */}
                 {/* <ProductTable products = {this.state.products} /> */}
                 </div>
@@ -331,6 +347,5 @@ reviewById = async (id) => {
     }
 }
     
-
 
 export default App;

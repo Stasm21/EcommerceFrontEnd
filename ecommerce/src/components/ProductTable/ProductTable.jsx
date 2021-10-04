@@ -1,5 +1,6 @@
 import React from 'react';
 import './ProductTable.css'
+import NewReview from '../Reviews/NewReview';
 
 function ProductTable(props){
     if (props.products === undefined) {
@@ -17,7 +18,7 @@ function ProductTable(props){
                 <td>{product.description}</td>
                 <td>{product.price}</td>
                 <td>{product.averageRating}</td>
-                <td>{categories}</td>
+                <td>{product.category.name}</td>
             </tr>
         })
         return (
