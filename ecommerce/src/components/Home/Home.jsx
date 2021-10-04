@@ -9,7 +9,7 @@ const Home = (props) => {
         <div className = "home">
             <br /> <br /> <br />
             {/* <NewSearchBar filterProducts = {props.filterAllProducts} /> */}
-            <ProductTable products = {props.products} />
+            <ProductTable products = {props.products} categories = {props.categories} />
         </div>
     );
 }
