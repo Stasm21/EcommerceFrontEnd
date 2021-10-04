@@ -298,7 +298,7 @@ reviewById = async (id) => {
 
     
   createReview = async (shoe) => {
-      
+
       try{
           let response = await axios.post('https://localhost:44394/api/Review/', shoe)
           console.log(response.data)
@@ -327,6 +327,7 @@ reviewById = async (id) => {
                     <Route path="/registration" render={() => <Registration  userRegister = {this.userRegister} />} />
                     <Route path="/login" render={() => <Login userLogin={this.userLogin}/>} />
                     <Route path="/" exact render={() => <Home filterProducts={this.filterAllProducts} products = {this.state.products} categories={this.state.categories} />} />
+                    <Route path="/Review" render={() => <NewReview createNewReview={this.createReview} /> } />
                     <Route path="/add-product" render={() => <AddProduct products = {this.state.products} categories={this.state.categories} />} />
                     <Route path="/shopping-cart" render={() => <ShoppingCart decreaseQuantity={this.decreaseQuantity}
                             increaseQuantity={this.increaseQuantity}
@@ -336,7 +337,7 @@ reviewById = async (id) => {
                             deleteItemFromCart={this.deleteItemFromCart()}/>} />
                 </Switch>
                 <Review reviews = {this.state.reviews} />
-                <NewReview createNewReview={this.createReview}/>
+                {/* <NewReview createNewReview={this.createReview}/> */}
                 {/* <AddProduct categories = {this.state.categories}/> */}
                 {/* <ProductTable products = {this.state.products} /> */}
 
