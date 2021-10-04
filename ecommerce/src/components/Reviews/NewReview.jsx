@@ -5,7 +5,7 @@ class NewReview extends Component {
         super(props);
         this.state = { 
             productId: 0,
-            reviewDescription: '',
+            description: '',
             rating: 0,
          }
     }
@@ -14,22 +14,32 @@ class NewReview extends Component {
         this.setState({
             [event.target.name]: event.target.value
         })
-        console.log(event.target.value)
     }
 
     handleSubmit = event => {
-        debugger;
+        const review = {
+            productId: parseInt(this.state.productId),
+            description: this.state.description,
+            rating: parseInt(this.state.rating)
+        }
         event.preventDefault();
-        this.props.createNewReview(this.state)
+        this.props.createNewReview(review);
+        this.setState({
+            productId: 0,
+            description: '',
+            rating: 0,
+        });
     }
 
     render() { 
         return ( 
-            <div onSubmit={this.handleSubmit}>
+            
+            <div>
+                 <form onSubmit={this.handleSubmit} >
                 <label>Product Id </label>
                 <input name="productId" onChange={this.handleChange} value={this.state.productId} />
                 <label>Review Description</label>
-                <input type='text' name='reviewDescription' onChange={this.handleChange} value={this.state.reviewDescription} />
+                <input type='text' name='description' onChange={this.handleChange} value={this.state.description} />
                 <label>Review Rating
                         <select
                         name='rating'
@@ -44,8 +54,9 @@ class NewReview extends Component {
                         <option value='4'>4</option>
                         <option value='5'>5</option>
                         </select>
-                        <button type='submit'>Submit</button>
-                    </label>
+                </label>
+                <button type='submit'>Submit</button>
+                </form>
             </div>
          );
     }

@@ -295,10 +295,12 @@ reviewById = async (id) => {
 //       });
 //       }
 //   }
+
     
-  createReview = async (review) => {
+  createReview = async (shoe) => {
+      
       try{
-          let response = await axios.post('https://localhost:44394/api/Review/', review)
+          let response = await axios.post('https://localhost:44394/api/Review/', shoe)
           console.log(response.data)
       }
       catch(err){
