@@ -30,7 +30,8 @@ class App extends Component {
             shoppingCart: [],
             reviews: [],
             reviewById: [],
-            newReview: []
+            newReview: [],
+            productId:[]
         }
     }
 
@@ -135,7 +136,7 @@ class App extends Component {
                 this.setState({
                     categories: response.data
                 });
-                //console.log(this.state.categories)
+                console.log(this.state.categories)
             }
         }
         catch (err){
@@ -192,9 +193,9 @@ class App extends Component {
             console.log(err);
         }
     };
-    addProductToCart = async (product) => {
+    addProductToCart = async (item) => {
         let productToAdd = {
-            productId: product.productId
+            products : item.productID
         }
         try{
             const jwt= localStorage.getItem('token');
@@ -311,7 +312,8 @@ reviewById = async (id) => {
                 <Switch>
                     <Route path="/registration" render={() => <Registration  userRegister = {this.userRegister} />} />
                     <Route path="/login" render={() => <Login userLogin={this.userLogin}/>} />
-                    <Route path="/" exact render={() => <Home filterProducts={this.filterAllProducts} products = {this.state.products} />} />
+                    <Route path="/" exact render={() => <Home filterProducts={this.filterAllProducts} products = {this.state.products} 
+                            category={this.state.categories} addProduct={this.addProductToCart()} />} />
                     <Route path="/add-product" render={() => <AddProduct categories={this.state.categories} />} />
                     <Route path="/shopping-cart" render={() => <ShoppingCart decreaseQuantity={this.decreaseQuantity}
                             increaseQuantity={this.increaseQuantity}
@@ -323,7 +325,6 @@ reviewById = async (id) => {
                 <Review reviews = {this.state.reviews} />
                 {/* <AddProduct categories = {this.state.categories}/> */}
                 {/* <ProductTable products = {this.state.products} /> */}
-
                 </div>
             </div>
         );

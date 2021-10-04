@@ -1,55 +1,45 @@
-import React from "react";
+import React, { useState, useEffect,} from "react";
+import { ReactFragment } from "react";
 
-function ShoppingCart(props){
+    
+const ShoppingCart = (props) => {
+    const {shoppingCart , user, product, getUsersCart, increaseQuantity, decreaseQuantity, deleteItemFromCart}  = props;
+    const [quantityDidChange, setQuantityDidChange] = useState(false);
+    const [didDeleteProduct, setDidDeleteProduct] = useState(false);
+    let total = 0;
+    shoppingCart.map((item) => {
+      total += item.product.price * item.quantity
+    })
+    useEffect( () =>{
+      getUsersCart()
+    }, [quantityDidChange, didDeleteProduct])
+  
     return (
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        Shopping Cart
-                    </th>
-                </tr>
-            </thead>
-            <tbody className='ShoppingCart'>
-                {props.allProducts.map((products) => {
-                    return(
-                        <tr className='rows' key={products.id}>
-                            <td>{products.name}</td>
-                            <td>{products.price}</td>
-                            <td>{products.description}</td>
-                            <td>{products.averageRating}</td>
-                            <td><button className='increase' type='button' onClick={() => props.increaseQuantity(products)}> + </button></td> {/* This function increases Cart by 1 */}
-                            <td><button className='decrease' type='button' onClick={() => props.decreaseQuantity(products)}> - </button></td> {/* This function decreases Cart by 1 */}
-                        </tr>
-                    )
-                })}
-
-            </tbody>
-        </table>
-    )
-}
-
-export default ShoppingCart;
-
-// These are the functions inside of App.jsx
-// Need additional function in App.jsx that Updates the ShoppingCart, but was linked to an axios call in the YoutubeVideoProject
-
-// increaseQuantity = (product) => {
-//     console.log("Inside IncreaseQuantity")
-//     product.products += 1 
-//     let totalShoppingCart = {
-//       "increase" : product.increase,
-//       "decrease": product.decrease,
-//     }
-//     this.updateShoppingCart(product.id, totalShoppingCart)
-//   }
-
-// decreaseQuantity = (product) => {
-//     console.log("Inside DecreaseQuantity")
-//     product.products += 1 
-//     let totalShoppingCart = {
-//         "increase" : product.increase,
-//         "decrease": product.decrease,
-//     }
-//     this.updateShoppingCart(product.id, totalShoppingCart)
-//     }
+      <React.Fragment>
+        <div className='container'>
+          <div className='row'>
+            <div className='Col sm={8}'>
+                <h1 className="title">{user.user.username}'s Shopping Cart!</h1>
+              <div className="total">
+                <h4>
+                  Total:
+                  {total}
+                </h4>
+              </div>
+            </div>
+            <div className='Col sm={4}'/>
+          </div>
+        </div>
+        <div className='container'>
+        <div className='container fluid'>
+          <div className='row d-flex justify-content-center m-1'>
+            {shoppingCart.map((item) => {
+              <div>{total += item.product.price * item.quantity }</div>
+            })}
+          </div>
+        </div>
+        </div>
+      </React.Fragment>
+    );
+  };
+  export default ShoppingCart;
