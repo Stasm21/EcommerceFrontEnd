@@ -1,4 +1,5 @@
 import React from 'react';
+import NewReview from './NewReview';
 
 function Review(props){
     if (props.reviews === undefined) {
@@ -31,6 +32,7 @@ function Review(props){
                         {reviews}
                     </tbody>
                 </table>
+                <NewReview createNewReview={props.createReview}/>
             </div>
         )
     }

@@ -147,7 +147,7 @@ class App extends Component {
 
     filterAllProducts = async (searchTerm) => {
         let results = this.state.products.filter(function(product){
-            if(product.name === searchTerm)
+            if(product.name.toLowerCase().includes(searchTerm))
             {
                 return true;
             }
@@ -327,7 +327,7 @@ reviewById = async (id) => {
                     <Route path="/registration" render={() => <Registration  userRegister = {this.userRegister} />} />
                     <Route path="/login" render={() => <Login userLogin={this.userLogin}/>} />
                     <Route path="/" exact render={() => <Home filterProducts={this.filterAllProducts} products = {this.state.products} categories={this.state.categories} />} />
-                    <Route path="/Review" render={() => <NewReview createNewReview={this.createReview} /> } />
+                    <Route path="/Review" render={() => <Review reviews = {this.state.reviews} createNewReview={this.createReview}/>} />
                     <Route path="/add-product" render={() => <AddProduct products = {this.state.products} categories={this.state.categories} />} />
                     <Route path="/shopping-cart" render={() => <ShoppingCart decreaseQuantity={this.decreaseQuantity}
                             increaseQuantity={this.increaseQuantity}
@@ -336,7 +336,7 @@ reviewById = async (id) => {
                             shoppingCart={this.getShoppingCart()}
                             deleteItemFromCart={this.deleteItemFromCart()}/>} />
                 </Switch>
-                <Review reviews = {this.state.reviews} />
+                {/* <Review reviews = {this.state.reviews} /> */}
                 {/* <NewReview createNewReview={this.createReview}/> */}
                 {/* <AddProduct categories = {this.state.categories}/> */}
                 {/* <ProductTable products = {this.state.products} /> */}

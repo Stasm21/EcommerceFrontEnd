@@ -83,8 +83,8 @@ class AddProduct extends Component {
                     </td>
                 </tr>
                 <tr><td>
-                    <label>Rating</label>
-                    <input type = 'text' name = 'rating' onChange={this.handleChange} value= {this.state.rating}/>
+                    {/* <label>Rating</label>
+                    <input type = 'text' name = 'rating' onChange={this.handleChange} value= {this.state.rating}/> */}
                     </td><td>
                     <label>Category
                         <select
@@ -94,10 +94,10 @@ class AddProduct extends Component {
                         value= {this.state.categoryID}
                         >
                         <option value=''>Select a Category</option>
-                        <option value='1'>{this.props.categories.name}</option>
-                        {/* <option value='2'>Exterior</option>
+                        <option value='1'>Performance</option>
+                        <option value='2'>Exterior</option>
                         <option value='3'>Interior</option>
-                        <option value='4'>Suspension</option> */}
+                        <option value='4'>Suspension</option>
                         </select>
                     </label>
                     {/* <input type = 'text' name = 'categoryID' onChange={this.handleChange} value= {this.state.categoryID}/> */}
