@@ -34,7 +34,7 @@ class NewReview extends Component {
     render() { 
         return ( 
             
-            <div>
+            <div className="review">
                  <form onSubmit={this.handleSubmit} >
                 <label>Product Id </label>
                 <input name="productId" onChange={this.handleChange} value={this.state.productId} />
