@@ -35,7 +35,7 @@ function ProductTable(props){
                             <th>Qty</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="prodbody">
                         {products}
                     </tbody>
                 </table>
