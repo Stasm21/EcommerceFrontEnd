@@ -10,6 +10,8 @@ function ProductTable(props){
         );
     } else {
         console.log(props);
+        console.log(props.category);
+        let categories = props.category
         let products = props.products.map((product) => {
             return <tr key={product.id}>
                 <td>{product.name}</td>
@@ -33,7 +35,7 @@ function ProductTable(props){
                             <th>Qty</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="prodbody">
                         {products}
                     </tbody>
                 </table>

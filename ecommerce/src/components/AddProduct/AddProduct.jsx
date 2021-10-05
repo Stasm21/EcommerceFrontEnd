@@ -37,10 +37,11 @@ class AddProduct extends Component {
             price : priceNum,
             rating : ratingNum,
             categoryID: catNum,
-            categories: this.state.categories
+            categories: this.props.categories
         }
         try{
             console.log(product)
+            console.log(categories)
             await axios.post('https://localhost:44394/api/product/', product);
             this.setState({});
             console.log(`${this.state.name} has been added`)
@@ -67,26 +68,27 @@ class AddProduct extends Component {
 
     render() {
         return (
+            <center>
             <div className="add">
             <form onSubmit = {(event) => this.handleSubmit(event)}>
                 <table>
                 <tr>
                     <td><label>Product Name</label>
-                    <input type = 'text' name = 'name' onChange={this.handleChange} value= {this.state.name}/></td>
+                    <input type = 'text' name = 'name' onChange={this.handleChange} value= {this.state.name}/>
+                    </td>
+                </tr>
+                <tr>
                     <td><label>Product Description</label>
                     <input type = 'text' name = 'description' onChange={this.handleChange} value= {this.state.description}/>
                     </td>
                 </tr>
-                <tr><td>
-                    <label>Price</label>
+                <tr>
+                    <td><label>Price</label>
                     <input type = 'text' name = 'price' onChange={this.handleChange} value= {this.state.price}/>
                     </td>
                 </tr>
-                <tr><td>
-                    {/* <label>Rating</label>
-                    <input type = 'text' name = 'rating' onChange={this.handleChange} value= {this.state.rating}/> */}
-                    </td><td>
-                    <label>Category
+                <tr> 
+                    <td><label>Category</label>
                         <select
                         name='categoryID'
                         onChange={this.handleChange}
@@ -99,15 +101,14 @@ class AddProduct extends Component {
                         <option value='3'>Interior</option>
                         <option value='4'>Suspension</option>
                         </select>
-                    </label>
-                    {/* <input type = 'text' name = 'categoryID' onChange={this.handleChange} value= {this.state.categoryID}/> */}
                     </td>
                 </tr>
                 <button type="submit">Create Product Listing</button>
                 </table>
             </form>
         </div>
-         );
+        </center>
+        );
     }
 }
 

@@ -5,6 +5,7 @@ import CottageSharpIcon from '@mui/icons-material/CottageSharp';
 import AddIcon from '@mui/icons-material/Add';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import LoginIcon from '@mui/icons-material/Login';
+import AddCommentIcon from '@mui/icons-material/AddComment';
 
 function NavBar() {
     return (
@@ -29,7 +30,7 @@ function NavBar() {
                     </Link>
 
                     <Link to="/review">
-                        <li>Add Review</li>
+                        <li><a><AddCommentIcon/>Add Review</a></li>
                     </Link>
 
             <h1 className="navbar_logo">SparkPlugs ™</h1>
