@@ -145,7 +145,6 @@ class App extends Component {
             console.log(err);
         }
     }
-
     filterAllProducts = async (searchTerm) => {
         let results = this.state.products.filter(function(product){
             if(product.name.toLowerCase().includes(searchTerm))
@@ -157,99 +156,99 @@ class App extends Component {
             products : results
         })
     }
-    getShoppingCart = async () => {
-        let tempShoppingCart = this.state.shoppingCart
-        try{
-            let response = await axios('https://localhost:44394/api/shoppingcart/');
-            if (response === undefined){
-                this.setState({});
-                console.log(response.data)
-            }
-            else{
-                this.setState({
-                tempShoppingCart: response.data
-                });
-            }
-            return this.setState({
-            shoppingCart: tempShoppingCart,
-        });
-        }
-        catch (err){
-            console.log(err);
-        }
-    };
-    getUsersCart = async () => {
-        try{
-            const jwt= localStorage.getItem('token');
-            let response = await axios.get(`https://localhost:44394/api/shoppingcart`, {headers: {Authorization: 'Bearer ' + jwt}})
-            if (response === undefined) {
-                this.setState({});
-            } 
-            else {
-            this.setState({
-                shoppingCart: response.data,
-            });
-            }
-        }
-        catch(err){
-            console.log(err);
-        }
-    };
-    addProductToCart = async (item) => {
-        let productToAdd = {
-            products : item.productID
-        }
-        try{
-            const jwt= localStorage.getItem('token');
-            let response = await axios.post("https://localhost:44394/api/shoppingcart", productToAdd, {headers: { Authorization: "Bearer " + jwt }})
-            if (response === undefined) {
-                this.setState({});
-            } 
-            else {
-            this.setState({
-                product: response.data,
-            });
-            }
-        }
-        catch(err){
-            console.log(err);
-        }
-    };
-    deleteProductFromCart = async (productId) => {
-        try{
-            const jwt= localStorage.getItem('token');
-            let response = await axios.delete(`https://localhost:44394/api/shoppingcart/${productId}`, {headers: {Authorization: 'Bearer ' + jwt}} )
-            if (response === undefined) {
-                this.setState({});
-            } 
-            else {
-            this.setState({
-                product: response.data,
-            });
-            }
-        }
-        catch(err){
-            console.log(err);
-        }
-    };
-    increaseQuantity = async (quantity, shoppingCartId) => {
-        try{
-            const jwt= localStorage.getItem('token');
-            await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity+1} ,{headers: {Authorization: 'Bearer ' + jwt}})
-        }
-        catch(err){
-            console.log(err);
-        }
-    };
-    decreaseQuantity = async (quantity, shoppingCartId) => {
-        try{
-            const jwt= localStorage.getItem('token');
-            await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity-1} ,{headers: {Authorization: 'Bearer ' + jwt}})
-        }
-        catch(err){
-            console.log(err);
-        }
-    };  
+    // getShoppingCart = async () => {
+    //     let tempShoppingCart = this.state.shoppingCart
+    //     try{
+    //         let response = await axios('https://localhost:44394/api/shoppingcart/');
+    //         if (response === undefined){
+    //             this.setState({});
+    //             console.log(response.data)
+    //         }
+    //         else{
+    //             this.setState({
+    //             tempShoppingCart: response.data
+    //             });
+    //         }
+    //         return this.setState({
+    //         shoppingCart: tempShoppingCart,
+    //     });
+    //     }
+    //     catch (err){
+    //         console.log(err);
+    //     }
+    // };
+    // getUsersCart = async () => {
+    //     try{
+    //         const jwt= localStorage.getItem('token');
+    //         let response = await axios.get(`https://localhost:44394/api/shoppingcart`, {headers: {Authorization: 'Bearer ' + jwt}})
+    //         if (response === undefined) {
+    //             this.setState({});
+    //         } 
+    //         else {
+    //         this.setState({
+    //             shoppingCart: response.data,
+    //         });
+    //         }
+    //     }
+    //     catch(err){
+    //         console.log(err);
+    //     }
+    // };
+    // addProductToCart = async (item) => {
+    //     let productToAdd = {
+    //         products : item.productID
+    //     }
+    //     try{
+    //         const jwt= localStorage.getItem('token');
+    //         let response = await axios.post("https://localhost:44394/api/shoppingcart", productToAdd, {headers: { Authorization: "Bearer " + jwt }})
+    //         if (response === undefined) {
+    //             this.setState({});
+    //         } 
+    //         else {
+    //         this.setState({
+    //             product: response.data,
+    //         });
+    //         }
+    //     }
+    //     catch(err){
+    //         console.log(err);
+    //     }
+    // };
+    // deleteProductFromCart = async (productId) => {
+    //     try{
+    //         const jwt= localStorage.getItem('token');
+    //         let response = await axios.delete(`https://localhost:44394/api/shoppingcart/${productId}`, {headers: {Authorization: 'Bearer ' + jwt}} )
+    //         if (response === undefined) {
+    //             this.setState({});
+    //         } 
+    //         else {
+    //         this.setState({
+    //             product: response.data,
+    //         });
+    //         }
+    //     }
+    //     catch(err){
+    //         console.log(err);
+    //     }
+    // };
+    // increaseQuantity = async (quantity, shoppingCartId) => {
+    //     try{
+    //         const jwt= localStorage.getItem('token');
+    //         await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity+1} ,{headers: {Authorization: 'Bearer ' + jwt}})
+    //     }
+    //     catch(err){
+    //         console.log(err);
+    //     }
+    // };
+    // decreaseQuantity = async (quantity, shoppingCartId) => {
+    //     try{
+    //         const jwt= localStorage.getItem('token');
+    //         await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity-1} ,{headers: {Authorization: 'Bearer ' + jwt}})
+    //     }
+    //     catch(err){
+    //         console.log(err);
+    //     }
+    // };  
  //REVIEW FUNCTIONS
  getReviews = async () => {
     try{
@@ -328,14 +327,14 @@ reviewById = async (id) => {
                     <Route path="/registration" render={() => <Registration  userRegister = {this.userRegister} />} />
                     <Route path="/login" render={() => <Login userLogin={this.userLogin}/>} />
                     <Route path="/" exact render={() => <Home filterProducts={this.filterAllProducts} products = {this.state.products} 
-                            category={this.state.categories} addProduct={this.addProductToCart()} />} />
+                            category={this.state.categories}  />} />
                     <Route path="/add-product" render={() => <AddProduct categories={this.state.categories} />} />
-                    <Route path="/shopping-cart" render={() => <ShoppingCart decreaseQuantity={this.decreaseQuantity}
+                    {/* <Route path="/shopping-cart" render={() => <ShoppingCart decreaseQuantity={this.decreaseQuantity}
                             increaseQuantity={this.increaseQuantity}
                             getUsersCart={this.getUsersCart()}
                             user={this.state.currentUser}
                             shoppingCart={this.getShoppingCart()}
-                            deleteItemFromCart={this.deleteItemFromCart()}/>} />
+                            deleteItemFromCart={this.deleteItemFromCart()}/>} /> */}
                 </Switch>
                 {/* <Review reviews = {this.state.reviews} /> */}
                 {/* <NewReview createNewReview={this.createReview}/> */}
@@ -349,3 +348,6 @@ reviewById = async (id) => {
     
 
 export default App;
+
+
+// addProduct={this.addProductToCart()} goes on line 330 after category
