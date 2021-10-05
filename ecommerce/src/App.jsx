@@ -150,7 +150,7 @@ class App extends Component {
             if(product.name.toLowerCase().includes(searchTerm))
             {
                 return true;
-            }
+            } 
         })
         this.setState({
             products : results
