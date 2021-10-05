@@ -32,7 +32,7 @@ function Review(props){
                         {reviews}
                     </tbody>
                 </table>
-                <NewReview createNewReview={props.createReview}/>
+                {/* <NewReview createNewReview={props.createReview}/> */}
             </div>
         )
     }

@@ -31,8 +31,6 @@ function ProductTable(props){
                             <th>Price</th>
                             <th>Avg Rating</th>
                             <th>Category</th>
-                            <th>Reviews</th>
-                            <th>Qty</th>
                         </tr>
                     </thead>
                     <tbody className="prodbody">

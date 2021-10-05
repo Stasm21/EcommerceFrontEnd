@@ -328,6 +328,7 @@ reviewById = async (id) => {
                     <Route path="/login" render={() => <Login userLogin={this.userLogin}/>} />
                     <Route path="/" exact render={() => <Home filterProducts={this.filterAllProducts} products = {this.state.products} 
                             category={this.state.categories}  />} />
+                    <Route path="/Review" render={() => <Review reviews = {this.state.reviews} createNewReview={this.createReview}/>} />
                     <Route path="/add-product" render={() => <AddProduct categories={this.state.categories} />} />
                     {/* <Route path="/shopping-cart" render={() => <ShoppingCart decreaseQuantity={this.decreaseQuantity}
                             increaseQuantity={this.increaseQuantity}
@@ -337,7 +338,7 @@ reviewById = async (id) => {
                             deleteItemFromCart={this.deleteItemFromCart()}/>} /> */}
                 </Switch>
                 {/* <Review reviews = {this.state.reviews} /> */}
-                {/* <NewReview createNewReview={this.createReview}/> */}
+                <NewReview createNewReview={this.createReview}/>
                 {/* <AddProduct categories = {this.state.categories}/> */}
                 {/* <ProductTable products = {this.state.products} /> */}
                 </div>

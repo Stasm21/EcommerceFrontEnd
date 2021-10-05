@@ -96,7 +96,7 @@ class AddProduct extends Component {
                         value= {this.state.categoryID}
                         >
                         <option value=''>Select a Category</option>
-                        <option value={this.categories.categoryID}>{this.categories.name}</option>
+                        <option value='1'>Performance</option>
                         <option value='2'>Exterior</option>
                         <option value='3'>Interior</option>
                         <option value='4'>Suspension</option>
