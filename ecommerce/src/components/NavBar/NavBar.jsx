@@ -29,7 +29,7 @@ function NavBar() {
                     </Link>
 
                     <Link to="/review">
-                        <li>Add Review</li>
+                        <li><a><AddCommentIcon/>Add Review</a></li>
                     </Link>
 
             <h1 className="navbar_logo">SparkPlugs ™</h1>
